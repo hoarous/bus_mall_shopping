@@ -28,11 +28,11 @@ Cart.prototype.removeItem = function(item) {
   // TODO: Fill in this instance method to remove one item from the cart.
   // Note: You will have to decide what kind of parameter to pass in here!
   var ourItem = this.items.find(function(element) {
-    return element.product === item;
+    return element.product.name === item;
   });
   ourItem.quantity--;
   if(!ourItem.quantity) {
-    this.items.splice(item,1);
+    this.items.splice(ourItem,1);
   }
 };
 
@@ -74,10 +74,11 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
-var ourCart = new Cart([]);
-console.log(ourCart);
-ourCart.addItem(Product.allProducts[0],2);
-console.log(ourCart);
-ourCart.addItem(Product.allProducts[0],2);
-console.log(ourCart);
-ourCart.saveToLocalStorage();
+var cart = new Cart([]);
+console.log(cart);
+cart.addItem(Product.allProducts[0],2);
+console.log(cart);
+cart.addItem(Product.allProducts[0],2);
+console.log(cart);
+cart.saveToLocalStorage();
+
